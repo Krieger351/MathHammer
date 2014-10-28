@@ -4,7 +4,10 @@ angular.module('MathHammer')
   $scope.bs=1;
   $scope.s=1;
   $scope.shots=1;
-  $scope.tl=false;
+  $scope.hit=false;
+  $scope.wound=false;
+  $scope.melta=false;
+  $scope.Math = Math;
 
   $scope.saves = {
     ' 2+':1/6,
