@@ -46,6 +46,10 @@
               <input type='checkbox' ng-model='wound' class='form-control'>
             </div>
             <div class='form-group'>
+              <label for='S'>Reroll Armor Pen</label>
+              <input type='checkbox' ng-model='armor_pen' class='form-control'>
+            </div>
+            <div class='form-group'>
               <label for='S'>Armorbane/melta</label>
               <input type='checkbox' ng-model='melta' class='form-control'>
             </div>
@@ -81,7 +85,7 @@
                 {{(bs_array[bs-1] + (hit*(1-bs_array[bs-1])*bs_array[bs-1])) * (i + wound*((1-i)*i))  * val * shots| number:4 }}
               </td>
               <td ng-repeat="i in [10,11,12,13,14]">
-                {{(bs_array[bs-1] + (hit*(1-bs_array[bs-1])*bs_array[bs-1])) | number:4 }} {{((7-(i-s))/6) | number:4}}
+                {{(bs_array[bs-1] + (hit*(1-bs_array[bs-1])*bs_array[bs-1])) * (Math.min(1,Math.max(0,((7-(i-s))/6))) + (armor_pen*( (1-Math.min(1,Math.max(0,((7-(i-s))/6))))*Math.min(1,Math.max(0,((7-(i-s))/6)))))) * val * shots | number:4 }}
               </td>
             </tr>
           </tbody>
