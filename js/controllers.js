@@ -36,5 +36,16 @@ angular.module('MathHammer')
         [5/6, 5/6, 5/6, 5/6, 5/6, 5/6, 5/6, 4/6, 3/6, 2/6],
         [5/6, 5/6, 5/6, 5/6, 5/6, 5/6, 5/6, 5/6, 4/6, 3/6],
     ];
-    $scope.melta_array = [1,.9722,.9166,.8333,.7222,.5833,.4166,.2777,.1666,.0833,.0277];
+    $scope.melta_array = [1,1,1,.9722,.9166,.8333,.7222,.5833,.4166,.2777,.1666,.0833,.0277,0,0,0];
+
+    $scope.armor = function (str, arm, rr, m){
+      var toReturn = 0;
+      if(!m){
+        toReturn = (7-(arm-str))/6 + (rr*(1-((7-(arm-str))/6))*(7-(arm-str))/6)
+      } else {
+        toReturn = $scope.melta_array[(arm-str)] + (rr*(1-$scope.melta_array[(arm-str)])*$scope.melta_array[(arm-str)])
+      }
+
+      return Math.min(1,Math.max(0,toReturn));
+    }
 }]);

@@ -85,7 +85,7 @@
                 {{(bs_array[bs-1] + (hit*(1-bs_array[bs-1])*bs_array[bs-1])) * (i + wound*((1-i)*i))  * val * shots| number:4 }}
               </td>
               <td ng-repeat="i in [10,11,12,13,14]">
-                {{(bs_array[bs-1] + (hit*(1-bs_array[bs-1])*bs_array[bs-1])) * (Math.min(1,Math.max(0,((7-(i-s))/6))) + (armor_pen*( (1-Math.min(1,Math.max(0,((7-(i-s))/6))))*Math.min(1,Math.max(0,((7-(i-s))/6)))))) * val * shots | number:4 }}
+                {{(bs_array[bs-1] + (hit*(1-bs_array[bs-1])*bs_array[bs-1])) * armor(s,i,armor_pen, melta) * val * shots | number:4 }}
               </td>
             </tr>
           </tbody>
