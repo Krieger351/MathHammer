@@ -9,9 +9,11 @@ angular.module('MathHammer')
   $scope.armor_pen=false;
   $scope.melta=false;
   $scope.Math = Math;
+  $scope.fnp = 0;
   localStorageService.bind($scope, 'bs',1);
   localStorageService.bind($scope, 's',1);
   localStorageService.bind($scope, 'shots',1);
+  localStorageService.bind($scope, 'fnp',0);
 
 
   $scope.saves = {
