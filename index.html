@@ -55,7 +55,7 @@
             </div>
             <div class='form-group'>
               <label for='fnp'>Feel No Pain</label>
-              <select name='fnp' type='checkbox' ng-model='fnp' class='form-control'>
+              <select name='fnp' type='checkbox' ng-model='fnp_val' class='form-control'>
                 <option value='0'>-</option>
                 <option value='1'>6+</option>
                 <option value='2'>5+</option>
@@ -91,13 +91,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="(save, val) in saves">
+              <tr ng-repeat="(save, save_val) in saves">
                 <td>{{save}}</td>
                 <td ng-repeat="i in ST[s-1] track by $index">
-                  {{(bs_array[bs-1] + (hit*(1-bs_array[bs-1])*bs_array[bs-1])) * (i + wound*((1-i)*i))  * val * ((6-fnp)/6) * shots| number:4 }}
+                  {{toShoot(bs, hit) * toWound(i,wound) *  save_val * fnp(s, $index+1, fnp_val) * shots| number:4 }}
                 </td>
                 <td ng-repeat="i in [10,11,12,13,14]">
-                  {{(bs_array[bs-1] + (hit*(1-bs_array[bs-1])*bs_array[bs-1])) * armor(s,i,armor_pen, melta) * val * shots | number:4 }}
+                  {{toShoot(bs, hit) * armor(s,i,armor_pen, melta) *  save_val * shots | number:4 }}
                 </td>
               </tr>
             </tbody>

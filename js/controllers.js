@@ -9,11 +9,11 @@ angular.module('MathHammer')
   $scope.armor_pen=false;
   $scope.melta=false;
   $scope.Math = Math;
-  $scope.fnp = 0;
+  $scope.fnp_val = 0;
   localStorageService.bind($scope, 'bs',1);
   localStorageService.bind($scope, 's',1);
   localStorageService.bind($scope, 'shots',1);
-  localStorageService.bind($scope, 'fnp',0);
+  localStorageService.bind($scope, 'fnp_val',0);
 
 
   $scope.saves = {
@@ -40,6 +40,20 @@ angular.module('MathHammer')
     ];
     $scope.melta_array = [1,1,1,.9722,.9166,.8333,.7222,.5833,.4166,.2777,.1666,.0833,.0277,0,0,0];
 
+    $scope.toShoot = function(bs, hit){
+      if(hit){
+        return $scope.bs_array[bs-1] + (1-$scope.bs_array[bs-1])*$scope.bs_array[bs-1];
+      }
+      return $scope.bs_array[bs-1];
+    }
+
+    $scope.toWound = function(ST, wound){
+      if(wound){
+        return (ST + wound*((1-ST)*ST))
+      }
+      return ST;
+    }
+
     $scope.armor = function (str, arm, rr, m){
       var toReturn = 0;
       if(!m){
@@ -49,5 +63,12 @@ angular.module('MathHammer')
       }
 
       return Math.min(1,Math.max(0,toReturn));
+    }
+
+    $scope.fnp = function(s,t,fnp){
+      if(s/2 >= t){
+        return 1;
+      }
+      return ((6-fnp)/6);
     }
 }]);
