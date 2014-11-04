@@ -1,5 +1,5 @@
 angular.module('MathHammer')
-.controller('TableCtrl', ['$scope','localStorageService',function($scope, localStorageService){
+.controller('ShootingCtrl', ['$scope','localStorageService',function($scope, localStorageService){
 
   $scope.bs=1;
   $scope.s=1;
@@ -14,7 +14,6 @@ angular.module('MathHammer')
   localStorageService.bind($scope, 's',1);
   localStorageService.bind($scope, 'shots',1);
   localStorageService.bind($scope, 'fnp_val',0);
-
 
   $scope.saves = {
     ' 2+':1/6,

@@ -19,7 +19,7 @@
         </div>
       </div>
     </nav>
-    <div ng-controller='TableCtrl' class="container">
+    <div ng-controller='ShootingCtrl' class="container">
       <div class="panel panel-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">Shooting Data</div>
@@ -64,44 +64,42 @@
                 <option value='5'>2+</option>
               </select>
             </div>
+          </form>
           </div>
-        </div>
-
-        <!-- Table -->
-        <div class='table-responsive'>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Save</th>
-                <th>T1</th>
-                <th>T2</th>
-                <th>T3</th>
-                <th>T4</th>
-                <th>T5</th>
-                <th>T6</th>
-                <th>T7</th>
-                <th>T8</th>
-                <th>T9</th>
-                <th>T10</th>
-                <th>A10</th>
-                <th>A11</th>
-                <th>A12</th>
-                <th>A13</th>
-                <th>A14</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="(save, save_val) in saves">
-                <td>{{save}}</td>
-                <td ng-repeat="i in ST[s-1] track by $index">
-                  {{toShoot(bs, hit) * toWound(i,wound) *  save_val * fnp(s, $index+1, fnp_val) * shots| number:4 }}
-                </td>
-                <td ng-repeat="i in [10,11,12,13,14]">
-                  {{toShoot(bs, hit) * armor(s,i,armor_pen, melta) *  save_val * shots | number:4 }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <!-- Table -->
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Save</th>
+                  <th>T1</th>
+                  <th>T2</th>
+                  <th>T3</th>
+                  <th>T4</th>
+                  <th>T5</th>
+                  <th>T6</th>
+                  <th>T7</th>
+                  <th>T8</th>
+                  <th>T9</th>
+                  <th>T10</th>
+                  <th>A10</th>
+                  <th>A11</th>
+                  <th>A12</th>
+                  <th>A13</th>
+                  <th>A14</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="(save, save_val) in saves">
+                  <td>{{save}}</td>
+                  <td ng-repeat="i in ST[s-1] track by $index">
+                    {{toShoot(bs, hit) * toWound(i,wound) *  save_val * fnp(s, $index+1, fnp_val) * shots| number:4 }}
+                  </td>
+                  <td ng-repeat="i in [10,11,12,13,14]">
+                    {{toShoot(bs, hit) * armor(s,i,armor_pen, melta) *  save_val * shots | number:4 }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
         </div>
       </div>
     </div>
