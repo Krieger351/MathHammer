@@ -1,8 +1,8 @@
 {
   "name": "MathHammer",
-  "version": "1.0.0",
-  "description": "Using math to compare Warhammer and Age Of Sigmar models.",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Utility for analizing warhammer 40k",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,18 +10,10 @@
     "type": "git",
     "url": "https://github.com/VladimirStrelok/MathHammer.git"
   },
-  "author": "Alexander Glica",
+  "author": "Alex Glica",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/VladimirStrelok/MathHammer/issues"
   },
-  "homepage": "https://github.com/VladimirStrelok/MathHammer",
-  "devDependencies": {
-    "bower": "^1.5.2",
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-less": "^1.0.1",
-    "jade": "^1.11.0",
-    "less": "^2.5.1"
-  }
+  "homepage": "https://github.com/VladimirStrelok/MathHammer"
 }
