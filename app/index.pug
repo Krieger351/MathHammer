@@ -1,0 +1,65 @@
+doctype html
+html(lang="en" ng-app='MathHammer')
+  head
+    title Math Hammer
+    link(rel='stylesheet' href='css/style.css')
+  body
+    nav.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+      .container
+        .navbar-header
+          a.navbar-brand(href="#") Math Hammer
+    .container(ng-controller='ShootingCtrl')
+      .panel.panel-primary
+        .panel-heading.clearfix
+          form.form-inline
+            .form-group
+              label(for='BS') BS
+              input.form-control(name='BS' type='number' min='1' max='10' ng-model='bs')
+            .form-group
+              label(for='S') Strength
+              input.form-control(name='S' type='number' min='1' max='10' ng-model='str')
+            .form-group
+              label(for='shots') Shots
+              input.form-control(name='shots' type='number' min='1' ng-model='shots')
+            .form-group
+              label(for='fnp') Feel No Pain</label>
+              select.form-control(name='fnp',type='checkbox', ng-model='fnp_val', ng-options="option.value as option.name for option in fnp_array")
+            button.btn.btn-default.pull-right(ng-click="showAdvanced = !showAdvanced") Advanced
+              i.fa.fa-fw.fa-chevron-down(ng-class="{'fa-flip-vertical':showAdvanced}", style="transition-duration: .2s")
+        .panel-body.advancedOptions(uib-collapse="!showAdvanced", ng-init="showAdvanced = false")
+          form.form-inline
+            .form-group
+              label(for='hit') Reroll to Hit
+              input.form-control(name='hit' type='checkbox' ng-model='hit' class='form-control')
+            .form-group
+              label(for='wound') Reroll to Wound
+              input.form-control(name='wound' type='checkbox' ng-model='wound' class='form-control')
+            .form-group
+              label(for='armor_pen') Reroll Armor Pen
+              input.form-control(name='armor_pen' type='checkbox' ng-model='armor_pen' class='form-control')
+            .form-group
+              label(for='melta') Armorbane/melta
+              input.form-control(name='melta' type='checkbox' ng-model='melta' class='form-control')
+        .table-responsive
+          table.table.table-bordered.table-striped
+            thead
+              tr
+                th Save
+                - for (var x = 1; x <= 10; x++)
+                  th T
+                    =x
+                - for (var x = 10; x <= 14; x++)
+                  th A
+                    =x
+            tbody
+              tr(ng-repeat="(save, save_val) in saves")
+                td {{save}}
+                td(ng-repeat="t in [1,2,3,4,5,6,7,8,9,10] track by $index") {{ successfulWound(t) | number:4}}
+                td(ng-repeat="i in [10,11,12,13,14]") {{ toShoot(bs, hit) * armor(s,i,armor_pen, melta) *  save_val * shots | number:4 }}
+    script require('../renderer.js')
+    script(src="../bower_components/angular/angular.js")
+    script(src="../bower_components/angular-local-storage/dist/angular-local-storage.min.js")
+    script(src="../bower_components/angular-animate/angular-animate.min.js")
+    script(src="../bower_components/angular-bootstrap/ui-bootstrap.min.js")
+    script(src="./js/app.js")
+    script(src="./js/controllers.js")
