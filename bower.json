@@ -1,11 +1,13 @@
 {
   "name": "MathHammer",
-  "version": "2.0.0",
-  "homepage": "https://github.com/VladimirStrelok/MathHammer",
+  "description": "Utility for analizing warhammer 40k",
+  "main": "main.js",
   "authors": [
-    "VladimirStrelok <alexander.glica@gmail.com>"
+    "Alex Glica"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/VladimirStrelok/MathHammer",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -14,9 +16,11 @@
     "tests"
   ],
   "dependencies": {
-    "angular-local-storage": "~0.1.3",
-    "bootstrap": "~3.2.0",
-    "angular": "~1.3.0",
-    "angular-route": "~1.4.4"
+    "angular": "^1.5.8",
+    "angular-local-storage": "^0.5.2",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3",
+    "angular-animate": "^1.5.8",
+    "angular-bootstrap": "^2.2.0"
   }
 }
